@@ -1,11 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 12, 2023 at 10:44 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Host: localhost:3306
+-- Generation Time: Nov 09, 2023 at 07:03 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,6 +31,13 @@ CREATE TABLE `admin` (
   `kata` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`idadmin`, `kata`) VALUES
+(1, 'aina');
+
 -- --------------------------------------------------------
 
 --
@@ -40,11 +46,18 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `pelajar` (
   `idpelajar` int(12) NOT NULL,
-  `warden` int(50) NOT NULL,
+  `warden` varchar(50) NOT NULL,
   `namapelajar` varchar(100) NOT NULL,
-  `nokppelajar` int(12) NOT NULL,
+  `nokppelajar` varchar(12) NOT NULL,
   `kata` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pelajar`
+--
+
+INSERT INTO `pelajar` (`idpelajar`, `warden`, `namapelajar`, `nokppelajar`, `kata`) VALUES
+(1, 'effa', 'elvin', '031922020089', 'elvin');
 
 -- --------------------------------------------------------
 
@@ -54,11 +67,18 @@ CREATE TABLE `pelajar` (
 
 CREATE TABLE `peralatan` (
   `idperalatan` int(20) NOT NULL,
-  `pelajar` int(250) NOT NULL,
+  `pelajar` varchar(250) NOT NULL,
   `jenisperalatan` varchar(80) NOT NULL,
   `jenama` varchar(50) NOT NULL,
   `nosiri` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peralatan`
+--
+
+INSERT INTO `peralatan` (`idperalatan`, `pelajar`, `jenisperalatan`, `jenama`, `nosiri`) VALUES
+(1, 'elvin', 'kipas meja', 'penasonic', 12345);
 
 -- --------------------------------------------------------
 
@@ -69,9 +89,16 @@ CREATE TABLE `peralatan` (
 CREATE TABLE `warden` (
   `idwarden` int(12) NOT NULL,
   `namawarden` varchar(100) NOT NULL,
-  `nokpwarden` int(12) NOT NULL,
+  `nokpwarden` varchar(12) NOT NULL,
   `kata` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `warden`
+--
+
+INSERT INTO `warden` (`idwarden`, `namawarden`, `nokpwarden`, `kata`) VALUES
+(1, 'effa', '030519020022', 'effa');
 
 --
 -- Indexes for dumped tables
@@ -100,6 +127,28 @@ ALTER TABLE `peralatan`
 --
 ALTER TABLE `warden`
   ADD PRIMARY KEY (`idwarden`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `idadmin` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pelajar`
+--
+ALTER TABLE `pelajar`
+  MODIFY `idpelajar` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `warden`
+--
+ALTER TABLE `warden`
+  MODIFY `idwarden` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
