@@ -1,15 +1,25 @@
 <?php
+session_start();
 require '../include/conn.php';
 
 if ($conn->connect_error) {
     die("Sambungan ke pangkalan data gagal: " . $conn->connect_error);
 }
 
-$idpelajar = $_POST['idpelajar'];
+if (!isset($_SESSION['idpelajar'])) {
+    header('location: ../login.php');
+    exit();
+}
 
-$sql = "SELECT PERALATAN FROM idperalatan WHERE idpelajar = $idpelajar";
+$idpelajar = $_SESSION['idpelajar'];
+
+$sql = "SELECT idperalatan FROM peralatan WHERE idpelajar = $idpelajar";
 
 $result = $conn->query($sql);
+
+if ($result === false) {
+    die("Error in SQL query: " . $conn->error);
+}
 
 if ($result->num_rows > 0) {
     echo "Senarai peralatan milik pelajar ID $idpelajar:<br>";
