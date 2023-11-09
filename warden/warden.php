@@ -12,7 +12,7 @@
     <?php
     if (!isset($_GET['edit'])) {
         ?>
-<form action="simpan.php" method="post">
+<form action="../admin/simpan.php" method="post">
     <fieldset>
         <legend>Daftar Warden</legend>
         <table>
@@ -46,7 +46,7 @@
         $result = $conn->query($sql);
         $row = $result->fetch_object();
 ?>
-<form action="update.php" method="post">
+<form action="../admin/update.php" method="post">
     <input type="hidden" name="idwarden" value="<?php echo $row->idwarden; ?>">
     <fieldset>
         <legend>Update Data Warden</legend>
@@ -97,9 +97,9 @@ while ($row= $result->fetch_object()) {
     <td><?php echo $row->nokpwarden; ?></td>
     <td><?php echo $row->katalaluan; ?></td>
     <td>
-        <a href="index.php?menu=pelajar&edit=<?php echo $row->idwarden; ?>" class="btn-edit">Edit</a>
+        <a href="../admin/index.php?menu=pelajar&edit=<?php echo $row->idwarden; ?>" class="btn-edit">Edit</a>
 
-        <a href="padam.php?idwarden<?php echo $row->idwarden; ?>" onclick="return confirm('Adakah anda pasti?')" class="btn-edit">Padam</a>
+        <a href="../admin/padam.php?idwarden<?php echo $row->idwarden; ?>" onclick="return confirm('Adakah anda pasti?')" class="btn-edit">Padam</a>
     </td>
 </tr>
 <?php
