@@ -1,34 +1,36 @@
 <?php
-session_start();
 require '../include/conn.php';
-
-if ($conn->connect_error) {
-    die("Sambungan ke pangkalan data gagal: " . $conn->connect_error);
-}
-
-if (!isset($_SESSION['idpelajar'])) {
-    header('location: ../login.php');
-    exit();
-}
-
-$idpelajar = $_SESSION['idpelajar'];
-
-$sql = "SELECT idperalatan FROM peralatan WHERE idpelajar = $idpelajar";
-
-$result = $conn->query($sql);
-
-if ($result === false) {
-    die("Error in SQL query: " . $conn->error);
-}
-
-if ($result->num_rows > 0) {
-    echo "Senarai peralatan milik pelajar ID $idpelajar:<br>";
-    while ($row = $result->fetch_assoc()) {
-        echo $row["idperalatan"] . "<br>";
-    }
-} else {
-    echo "Tiada peralatan dijumpai untuk pelajar ID $idpelajar.";
-}
-
-$conn->close();
+if (!isset($_SESSION['idwarden'])) header('location: ../login.php');
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Page</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Warden</td>
+        <td class="navbar">
+            <a href="index.php?menu=home">Home</a>
+            <a href="index.php?menu=senaraiPelajar">Senarai Pelajar</a>
+            <a href="index.php?menu=senaraiPeralatan">Senarai Peralatan</a>
+
+        </td>
+    </tr>
+</table>
+
+<?php
+$menu = 'home';
+if (isset($_GET['menu'])) {
+    $menu = $_GET['menu'];
+}
+include "$menu.php";
+?>
+
+</body>
+</html>
