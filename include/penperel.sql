@@ -1,8 +1,9 @@
+-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2023 at 07:03 AM
+-- Generation Time: Nov 09, 2023 at 07:14 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -36,7 +37,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idadmin`, `kata`) VALUES
-(1, 'aina');
+(1, '$2y$10$9i1jeYmQF4hqHViFQFMcOuj.qdhLBglUTnh0WRn0vbIJyrctQn1Ja');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE `pelajar` (
 --
 
 INSERT INTO `pelajar` (`idpelajar`, `warden`, `namapelajar`, `nokppelajar`, `kata`) VALUES
-(1, 'effa', 'elvin', '031922020089', 'elvin');
+(1, 'effa', 'elvin', '031922020089', '$2y$10$s1PTW1D/6mH6w1zTtFVDGOn5.qHfR0dC3AeGbIHuQ3PPAhje56Q9q');
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,7 @@ CREATE TABLE `warden` (
 --
 
 INSERT INTO `warden` (`idwarden`, `namawarden`, `nokpwarden`, `kata`) VALUES
-(1, 'effa', '030519020022', 'effa');
+(1, 'effa', '030519020022', '$2y$10$1wKC.LZrIDjqfMXxMh1OIuvChiOof/bI7GcRIiC0AGS9Bla1Mr85.');
 
 --
 -- Indexes for dumped tables
